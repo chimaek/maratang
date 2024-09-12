@@ -34,11 +34,12 @@ jobs:
             cd /home/ubuntu/app/maratang
             git pull origin main
 
+            source venv/bin/activate
+            
             cd /home/ubuntu/app/maratang/drf_test
             
             echo "SECRET_KEY=\"${{ secrets.SECRET_KEY }}\"" > .env
             echo "DEBUG='${{ secrets.DEBUG }}'" >> .env
 
-            source venv/bin/activate
             pip install -r requirements.txt
             sudo systemctl restart site.service
