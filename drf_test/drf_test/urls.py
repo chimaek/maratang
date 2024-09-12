@@ -22,11 +22,12 @@ from quick import views
 router = routers.DefaultRouter()
 router.register(r"users", views.UserViewSet)
 router.register(r"groups", views.GroupViewSet)
-router.register(r"health", views.health)
+
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/", include(router.urls)),
+    path("api/v1/health/", views.health, name="health"),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 ]
